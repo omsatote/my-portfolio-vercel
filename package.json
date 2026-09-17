@@ -7,7 +7,9 @@
     "dev": "vite",
     "dev:backend": "npm --prefix backend run dev",
     "install:backend": "npm --prefix backend install",
+    "postinstall": "npm --prefix backend install",
     "build": "vite build",
+    "start": "npm run build && node backend/server.js",
     "lint": "oxlint",
     "preview": "vite preview"
   },
