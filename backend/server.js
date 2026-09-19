@@ -17,4 +17,4 @@ app.use('/api/contact', contactRouter)
 app.use(express.static(frontendDirectory))
 app.get(/.*/, (_req, res) => res.sendFile(path.join(frontendDirectory, 'index.html')))
 
-app.listen(port, () => console.log(`Portfolio API listening on port ${port}`))
+app.listen(port, '0.0.0.0', () => console.log(`Portfolio API listening on port ${port}`))
