@@ -76,6 +76,11 @@ function App() {
       .then((repositories) => setProjects(repositories.map((repository, index) => [String(index + 1).padStart(2, '0'), repository.language || 'GitHub repository', repository.name, repository.description || 'A project from my developer journey.', repository.topics?.length ? repository.topics.slice(0, 4) : [repository.language || 'Code'], repository.html_url])))
       .catch(() => setProjects(fallbackProjects.map((project) => [...project, 'https://github.com/omsatote'])))
   }, [])
+  useEffect(() => {
+    const links = document.querySelectorAll('.contact-links a')
+    if (links[1]) links[1].href = 'https://www.linkedin.com/in/om-satote/'
+    if (links[2]) links[2].href = 'https://github.com/omsatote'
+  }, [])
   return <div className="site-shell">
     <nav className="nav wrap"><a className="brand" href="#top">OM<span>•</span>SATOTE</a><button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">{menuOpen ? <X /> : <Menu />}</button><div className={`nav-links ${menuOpen ? 'open' : ''}`}>{['about', 'skills', 'projects', 'experience', 'education', 'contact'].map((item) => <a key={item} href={`#${item}`} onClick={() => setMenuOpen(false)}>{item}</a>)}<Button href="#contact">Let's talk</Button></div></nav>
     <main id="top">
